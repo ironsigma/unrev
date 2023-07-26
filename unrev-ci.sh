@@ -54,7 +54,7 @@ fi
 DATE_TIME=$(date "+%Y-%m-%d_%H.%M.%S")
 
 # 7z compression options
-CMD_7Z_OPTIONS="-m0=lzma2 -mx=9"
+CMD_7Z_OPTIONS="-myx=9 -mx=9 -m0=PPMd:mem1g:o32"
 
 # Next revison number to use
 NEXT_REV=1
