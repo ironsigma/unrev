@@ -105,3 +105,6 @@ fi
 cat "$BASE_FILE" \
     | 7z a $CMD_7Z_OPTIONS "$ARCHIVE_FILE" -si"HEAD-R$NEXT_REV-$DATE_TIME" > /dev/null
 
+# Display revision number
+echo "revision: $NEXT_REV"
+
