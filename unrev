@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -o errexit
+set -o errtrace
+set -o nounset
+set -o pipefail
+#...set -o xtrace
+
+#
+# Author: Juan D Frias <juandfrias@gmail.com>
+# Created: Jul 25, 2023
+# Updated: Jul 26, 2023
+# Copyright: CC BY-NC-SA <https://creativecommons.org/licenses/by-nc-sa/4.0/>
+#
+
+SCRIPT=unrev
+VERSION=1.0.0
+
+if [[ $# -eq 0 || "${1:-}" = "--help" ]]; then
+    cat <<- USAGE_MSG
+$SCRIPT v$VERSION - un-revision control system
+
+    $SCRIPT [command] ...
+
+Commands:
+
+    ci  - Check-in
+    co  - Check-out
+    ls  - List versions
+
+USAGE_MSG
+    exit 0
+fi
+
+# find script
+script=$(which "unrev-${1:-}.sh" 2> /dev/null) || true
+
+# no script found, we're done
+if [ -z "$script" ]; then
+    echo "Invalid command \"${1:-}\""
+    exit 1
+fi
+
+# call the script with the args
+shift
+"$script" "$@"
+
