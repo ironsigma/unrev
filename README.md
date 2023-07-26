@@ -44,7 +44,9 @@ There is also a parent script to find other scripts for future extensibility.
 In order to check-in a new revision use the following
 
 ```shell
-unrev ci hello.txt
+$ unrev ci hello.txt
+
+revision: 1
 ```
 
 This will create a new archive `hello.txt,v.7z` in the current directory to hold the revisions.
@@ -53,7 +55,9 @@ Make more changes to `hello.txt` and repeat the same command a simple as that.
 If you want to specify the name and location of the archive file add it at the end.
 
 ```shell
-unrev ci hello.txt .vscode/hello.txt-revs.7z
+$ unrev ci hello.txt .vscode/hello.txt-revs.7z
+
+revision: 3
 ```
 
 You can use any name you like it doesn't even have to end in `7z` and can be stored anywhere.
@@ -69,7 +73,7 @@ the "save hook" I know that it will only be called if there are changes to be sa
 Listing revisions is easy, just specify the archive file.
 
 ```shell
-unrev ls hello.txt,v.7z
+$ unrev ls hello.txt,v.7z
 
 r3 Wed Jul 26 13:52.19 2023
 r2 Wed Jul 26 13:51.34 2023
@@ -83,9 +87,9 @@ The command will output the revision number followed by the date it was stored
 To check out a specific revision use the following:
 
 ```shell
-unrev co hello.txt,v.7z r3
+$ unrev co hello.txt,v.7z r3 .txt
 
-/tmp/tmp.hHMoFpHJiH,unrev
+/tmp/unrev-hello-R3-KSRZYc2G.txt
 ```
 
 This will checkout the revision specified into a temporary file.
