@@ -22,10 +22,17 @@ if [ $# -lt 2 ]; then
 $SCRIPT v$VERSION - Check-out revision from archive
 
 Usage:
-    $SCRIPT <archive> <rev num> [.ext]
+    $SCRIPT [--stdout] <archive> <rev num> [.ext]
 
 USAGEMSG
     exit 1
+fi
+
+# look for stdout flag
+STDOUT=false
+if [ "$1" = "--stdout" ]; then
+    STDOUT=true
+    shift
 fi
 
 # check archive file exists
@@ -72,6 +79,13 @@ while [ $rev -ge $REVISION_NUM ]; do
     rev=$((rev - 1))
 done
 
-# done, display file name
-echo "$base_file"
+# display file content?
+if [ "$STDOUT" = "true" ]; then
+    cat "$base_file"
+    rm "$base_file"
+
+else
+    # just display file name
+    echo "$base_file"
+fi
 

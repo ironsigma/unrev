@@ -93,7 +93,8 @@ $ unrev co hello.txt,v.7z r3 .txt
 ```
 
 This will checkout the revision specified into a temporary file.
-The name of the file is displayed, it will not be deleted, and must be cleaned up manually.
+The name of the file is displayed, it will not be deleted, and must be cleaned up manually
+unless `--stdout` option is specified.
 
 
 # Under The Hood
